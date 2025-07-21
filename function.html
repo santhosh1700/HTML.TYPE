@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Example</title>
+</head>
+<body>
+    <script>
+        function SendMessage() {
+            let x = 10;
+            console.log("Hai JS");
+            console.log(x);
+        }
+        SendMessage();
+
+        function check() {
+            if (true) {
+                let name = "WebDevelopment";
+                var iscloudy = true;
+                console.log(name);
+            }
+        }
+        check();
+
+        function first() {
+            console.log("This is my first function");
+        }
+
+        function second(callback) {
+            console.log("This is my second function");
+            callback();
+        }
+        second(first);
+
+        let count = 0;
+        let input = () => {
+            count++;
+            console.log(count);
+            if (count === 5) {
+                console.log("Count reached 5!");
+            }
+        };
+
+        
+         {
+            input();
+        }
+    </script>
+</body>
+</html>
