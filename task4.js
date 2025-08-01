@@ -21,9 +21,9 @@ function tasks() {
     }
   
 
-    console.log('Reversed words:', reverseWords('Hello world'));
+    console.log('Reversed words:', reverseWords('kumar'));
     console.log('Removed duplicates:', removeDuplicates([1, 2, 2, 3, 4, 4, 5]));
-    console.log('Vowel count:', countVowels('Hello World'));
+    console.log('Vowel count:', countVowels('hello santhosh'));
   }
   
   tasks();
