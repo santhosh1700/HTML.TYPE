@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Management Module</title>
+</head>
+<body>
+    <h1>Contact Management Module</h1>
+    <pre id="output"></pre>
+
+    <script>
+        function log(message) {
+            document.getElementById("output").textContent += message + "\n";
+        }
+
+        let contacts = [
+            {
+                name: "vijay",
+                phone: "9876543210",
+                email: "vijayharam@example.com",
+                displayInfo: function () {
+                    const { name, phone, email } = this;
+                    log(`Name: ${name}, Phone: ${phone}, Email: ${email}`);
+                }
+            },
+            {
+                name: "Priya",
+                phone: "9123456789",
+                email: "priya@example.com",
+                displayInfo: function () {
+                    const { name, phone, email } = this;
+                    log(`Name: ${name}, Phone: ${phone}, Email: ${email}`);
+                }
+            }
+        ];
+
+        log("First contact name (dot notation): " + contacts[0].name);
+        log("Second contact email (bracket notation): " + contacts[1]["email"]);
+
+        log("\nAll Contacts:");
+        contacts.forEach(contact => contact.displayInfo());
+
+        function addContacts(...newContacts) {
+            contacts.push(...newContacts);
+        }
+
+        addContacts(
+            { name: "Rohan ", phone: "9988776655", email: "rohan.@example.com", displayInfo: contacts[0].displayInfo },
+            { name: "Neha ", phone: "9876501234", email: "neha.@example.com", displayInfo: contacts[0].displayInfo }
+        );
+
+        log("\nAfter Adding Multiple Contacts:");
+        contacts.forEach(contact => contact.displayInfo());
+
+        let moreContacts = [
+            { name: "Vikram Singh", phone: "9012345678", email: "vikram.singh@example.com", displayInfo: contacts[0].displayInfo }
+        ];
+        contacts = [...contacts, ...moreContacts];
+
+        log("\nAfter Merging Contact Arrays:");
+        contacts.forEach(contact => contact.displayInfo());
+
+        let displayMethod = contacts[0].displayInfo;
+
+        log("\nUsing call():");
+        displayMethod.call({ name: "sanjayyy", phone: "9000000001", email: "sanjay@example.com" });
+
+        log("\nUsing apply():");
+        displayMethod.apply({ name: "Meena", phone: "9000000002", email: "meena@example.com" });
+
+        log("\nUsing bind():");
+        let boundDisplay = displayMethod.bind({ name: "Kiran ", phone: "9000000003", email: "kiran@example.com" });
+        boundDisplay();
+    </script>
+</body>
+</html>
