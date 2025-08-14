@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Library Management System</title>
+</head>
+<body>
+    <h1>Library Management System</h1>
+    <pre id="output"></pre>
+
+    <script>
+   
+        function log(message) {
+            document.getElementById("output").textContent += message + "\n";
+        }
+
+        class Book {
+            constructor(title, author, publishedYear) {
+                this.title = title;
+                this.author = author;
+                // 3) Use Date object to store published year
+                this.publishedDate = new Date(publishedYear, 0); // Month 0 = January
+            }
+
+            getSummary() {
+                return `${this.title} by ${this.author}, Published: ${this.publishedDate.getFullYear()}`;
+            }
+        }
+
+
+        class EBook extends Book {
+            constructor(title, author, publishedYear, fileSize) {
+             
+                super(title, author, publishedYear);
+                this.fileSize = fileSize; // in MB
+            }
+
+
+            getSummary() {
+                return `${super.getSummary()} [File size: ${this.fileSize}MB]`;
+            }
+        }
+
+     
+        let book1 = new Book("The Great Gatsby", "F. Scott Fitzgerald", 1925);
+        let book2 = new Book("To Kill a Mockingbird", "Harper Lee", 1960);
+
+        let ebook1 = new EBook("1984", "George Orwell", 1949, 1.2);
+        let ebook2 = new EBook("Clean Code", "Robert C. Martin", 2008, 5.4);
+
+   
+        log("Library Collection:\n");
+        log(book1.getSummary());
+        log(book2.getSummary());
+        log(ebook1.getSummary());
+        log(ebook2.getSummary());
+    </script>
+</body>
+</html>
